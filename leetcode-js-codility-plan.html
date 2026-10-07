@@ -1,0 +1,1815 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>LeetCode + JavaScript Plan for Codility</h1>
+<p>Each topic follows: Overview → Problem → Explanation → Solution → Summary → When to use → Practice.</p>
+<hr>
+<h2>1. JS Foundation Cheat Sheet</h2>
+<h3>1.1 Variables &amp; Types</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Syntax</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constant</td>
+<td><code>const n = 5;</code></td>
+<td>Default choice; can't be reassigned (contents of arrays/objects can change)</td>
+</tr>
+<tr>
+<td>Variable</td>
+<td><code>let s = &quot;hi&quot;;</code></td>
+<td>Use when the value changes. Avoid <code>var</code></td>
+</tr>
+<tr>
+<td>Primitive types</td>
+<td><code>number, string, boolean, null, undefined, bigint, symbol</code></td>
+<td>Everything else is an object (arrays, Map, Set, functions)</td>
+</tr>
+<tr>
+<td>Check type</td>
+<td><code>typeof x</code>, <code>Array.isArray(x)</code></td>
+<td><code>typeof null</code> is <code>&quot;object&quot;</code> (a quirk)</td>
+</tr>
+<tr>
+<td>Equality</td>
+<td><code>===</code> / <code>!==</code></td>
+<td>Always strict; avoid <code>==</code></td>
+</tr>
+<tr>
+<td>Falsy values</td>
+<td><code>false 0 &quot;&quot; null undefined NaN</code></td>
+<td>Everything else is truthy (including <code>[]</code> and <code>{}</code>)</td>
+</tr>
+<tr>
+<td>Safe default</td>
+<td><code>x ?? 0</code>, <code>x || 0</code></td>
+<td><code>??</code> only replaces null/undefined; <code>||</code> replaces any falsy value</td>
+</tr>
+<tr>
+<td>Optional chaining</td>
+<td><code>obj?.a?.b</code></td>
+<td>Returns <code>undefined</code> instead of throwing</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Numbers &amp; Math</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer division</td>
+<td><code>Math.floor(a / b)</code> or <code>Math.trunc(a / b)</code> (trunc rounds toward 0 for negatives)</td>
+</tr>
+<tr>
+<td>Remainder / power</td>
+<td><code>7 % 3</code> → <code>1</code>, <code>2 ** 3</code> → <code>8</code></td>
+</tr>
+<tr>
+<td>Rounding</td>
+<td><code>Math.floor</code>, <code>Math.ceil</code>, <code>Math.round</code>, <code>Math.trunc</code></td>
+</tr>
+<tr>
+<td>Min / max</td>
+<td><code>Math.min(a, b)</code>, <code>Math.max(...arr)</code></td>
+</tr>
+<tr>
+<td>Other</td>
+<td><code>Math.abs</code>, <code>Math.sqrt</code>, <code>Math.pow</code>, <code>Math.random()</code></td>
+</tr>
+<tr>
+<td>Infinity</td>
+<td><code>Infinity</code>, <code>-Infinity</code> (good initial values for min/max)</td>
+</tr>
+<tr>
+<td>Convert</td>
+<td><code>Number(&quot;3.5&quot;)</code>, <code>parseInt(&quot;12&quot;, 10)</code>, <code>(12).toString(2)</code> → <code>&quot;1100&quot;</code>, <code>parseInt(&quot;1100&quot;, 2)</code> → <code>12</code></td>
+</tr>
+<tr>
+<td>Checks</td>
+<td><code>Number.isInteger(x)</code>, <code>Number.isNaN(x)</code></td>
+</tr>
+<tr>
+<td>Safe limit</td>
+<td><code>Number.MAX_SAFE_INTEGER</code> = 2^53 − 1</td>
+</tr>
+<tr>
+<td>Bitwise</td>
+<td><code>a &amp; b</code>, <code>a | b</code>, <code>a ^ b</code> (XOR: <code>x ^ x = 0</code>), <code>~a</code>, <code>a &lt;&lt; 1</code>, <code>a &gt;&gt; 1</code></td>
+</tr>
+</tbody>
+</table>
+<h3>1.3 Strings (immutable)</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length / access</td>
+<td><code>s.length</code>, <code>s[0]</code>, <code>s.charAt(0)</code>, <code>s.at(-1)</code> (last char)</td>
+</tr>
+<tr>
+<td>Substring</td>
+<td><code>s.slice(1, 3)</code> (end exclusive; negatives allowed), <code>s.substring(1, 3)</code></td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>s.indexOf(&quot;a&quot;)</code> (−1 if missing), <code>s.includes(&quot;a&quot;)</code>, <code>s.startsWith(&quot;a&quot;)</code>, <code>s.endsWith(&quot;a&quot;)</code></td>
+</tr>
+<tr>
+<td>Case / trim</td>
+<td><code>s.toLowerCase()</code>, <code>s.toUpperCase()</code>, <code>s.trim()</code></td>
+</tr>
+<tr>
+<td>Split / join</td>
+<td><code>s.split(&quot;&quot;)</code> → chars, <code>s.split(&quot; &quot;)</code> → words, <code>arr.join(&quot;&quot;)</code></td>
+</tr>
+<tr>
+<td>Repeat / pad</td>
+<td><code>&quot;ab&quot;.repeat(3)</code>, <code>&quot;5&quot;.padStart(3, &quot;0&quot;)</code> → <code>&quot;005&quot;</code></td>
+</tr>
+<tr>
+<td>Replace</td>
+<td><code>s.replace(&quot;a&quot;, &quot;b&quot;)</code> (first), <code>s.replaceAll(&quot;a&quot;, &quot;b&quot;)</code></td>
+</tr>
+<tr>
+<td>Char ↔ code</td>
+<td><code>s.charCodeAt(0) - 97</code> ('a' → 0), <code>String.fromCharCode(97)</code> → <code>&quot;a&quot;</code></td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td><code>[...s].reverse().join(&quot;&quot;)</code></td>
+</tr>
+<tr>
+<td>Compare</td>
+<td><code>a &lt; b</code>, <code>a.localeCompare(b)</code></td>
+</tr>
+<tr>
+<td>Template</td>
+<td><code>`sum = ${a + b}`</code></td>
+</tr>
+<tr>
+<td>Regex test</td>
+<td><code>/[a-z0-9]/i.test(c)</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Strings can't be edited in place: convert to an array (<code>[...s]</code>), change it, then <code>join(&quot;&quot;)</code>.</p>
+</blockquote>
+<h3>1.4 Arrays</h3>
+<p><strong>Add / remove</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Effect</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>push(x)</code> / <code>pop()</code></td>
+<td>Add / remove at the end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>unshift(x)</code> / <code>shift()</code></td>
+<td>Add / remove at the front</td>
+<td><strong>O(n)</strong></td>
+</tr>
+<tr>
+<td><code>splice(i, del, ...items)</code></td>
+<td>Remove/insert in the middle (mutates)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td><code>slice(a, b)</code></td>
+<td>Copy a portion (no mutation)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td><code>concat(b)</code> / <code>[...a, ...b]</code></td>
+<td>Combine arrays</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Search &amp; transform</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indexOf(x)</code>, <code>includes(x)</code></td>
+<td>Index (or −1) / boolean (O(n))</td>
+</tr>
+<tr>
+<td><code>find(fn)</code>, <code>findIndex(fn)</code></td>
+<td>First match / its index</td>
+</tr>
+<tr>
+<td><code>map(fn)</code></td>
+<td>New array of transformed items</td>
+</tr>
+<tr>
+<td><code>filter(fn)</code></td>
+<td>New array of items passing the test</td>
+</tr>
+<tr>
+<td><code>reduce((acc, x) =&gt; acc + x, 0)</code></td>
+<td>Single accumulated value</td>
+</tr>
+<tr>
+<td><code>some(fn)</code>, <code>every(fn)</code></td>
+<td>Boolean: any / all pass</td>
+</tr>
+<tr>
+<td><code>flat()</code>, <code>fill(v)</code>, <code>reverse()</code>, <code>join(&quot;,&quot;)</code></td>
+<td>Flatten one level, fill, reverse (mutates), to string</td>
+</tr>
+<tr>
+<td><code>sort((a, b) =&gt; a - b)</code></td>
+<td>Sort <strong>in place</strong>. Always pass a comparator</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Create</strong></p>
+<pre><code class="language-js">new Array(n).fill(0);                         // [0,0,0,...]
+Array.from({ length: n }, (_, i) =&gt; i);       // [0,1,2,...,n-1]
+const grid = Array.from({ length: r }, () =&gt; new Array(c).fill(0)); // 2D grid
+</code></pre>
+<blockquote>
+<p><code>new Array(3).fill([])</code> makes 3 references to the <strong>same</strong> inner array. Use <code>Array.from</code> for 2D arrays.</p>
+</blockquote>
+<p><strong>Destructuring &amp; spread</strong></p>
+<pre><code class="language-js">const [x, y] = [1, 2];
+[a[i], a[j]] = [a[j], a[i]];   // swap
+Math.max(...arr);              // spread into arguments
+const copy = [...arr];
+</code></pre>
+<p><strong>Sorting examples</strong></p>
+<pre><code class="language-js">nums.sort((a, b) =&gt; a - b);                  // ascending numbers
+nums.sort((a, b) =&gt; b - a);                  // descending
+words.sort();                                // alphabetical (strings only)
+pairs.sort((p, q) =&gt; p[0] - q[0]);           // by first element
+</code></pre>
+<h3>1.5 Objects, Map &amp; Set</h3>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Create</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td><code>const o = {a: 1}</code></td>
+<td><code>o.b = 2</code>, <code>&quot;a&quot; in o</code>, <code>delete o.a</code>, <code>Object.keys(o)</code>, <code>Object.values(o)</code>, <code>Object.entries(o)</code></td>
+</tr>
+<tr>
+<td>Map</td>
+<td><code>new Map()</code></td>
+<td><code>set(k, v)</code>, <code>get(k)</code>, <code>has(k)</code>, <code>delete(k)</code>, <code>size</code>, iterate with <code>for (const [k, v] of m)</code></td>
+</tr>
+<tr>
+<td>Set</td>
+<td><code>new Set(arr)</code></td>
+<td><code>add(x)</code>, <code>has(x)</code>, <code>delete(x)</code>, <code>size</code>, <code>[...set]</code> to array</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-js">// Frequency counter
+const freq = new Map();
+for (const x of arr) freq.set(x, (freq.get(x) ?? 0) + 1);
+</code></pre>
+<blockquote>
+<p>Object keys become strings. Prefer <code>Map</code> for numeric keys. Map and Set lookups are O(1) on average.</p>
+</blockquote>
+<h3>1.6 Control Flow &amp; Loops</h3>
+<pre><code class="language-js">if (a &gt; b) {...} else if (a === b) {...} else {...}
+const v = cond ? &#34;yes&#34; : &#34;no&#34;;
+
+for (let i = 0; i &lt; n; i++) {}        // index loop
+for (const x of arr) {}               // values (arrays, strings, Sets)
+for (const [i, x] of arr.entries()) {}// index + value
+for (const k in obj) {}               // keys of an object
+while (cond) {}
+break;     // exit loop
+continue;  // skip to next iteration
+</code></pre>
+<h3>1.7 Functions</h3>
+<pre><code class="language-js">function add(a, b = 0) { return a + b; }   // default parameter
+const double = (x) =&gt; x * 2;               // arrow function
+const sum = (...nums) =&gt; nums.reduce((a, b) =&gt; a + b, 0); // rest parameters
+arr.forEach((x, i) =&gt; { ... });            // no return value; can&#39;t break
+</code></pre>
+<ul>
+<li>A function without <code>return</code> gives <code>undefined</code>.</li>
+<li>Arrays and objects are passed by reference, so mutating them inside a function affects the original.</li>
+<li>Codility format: <code>function solution(A) { ... return result; }</code></li>
+</ul>
+<h3>1.8 Classes (for design problems like MinStack)</h3>
+<pre><code class="language-js">class Stack {
+  constructor() { this.items = []; }
+  push(x) { this.items.push(x); }
+  pop() { return this.items.pop(); }
+  peek() { return this.items[this.items.length - 1]; }
+  get size() { return this.items.length; }
+}
+const s = new Stack();
+</code></pre>
+<h3>1.9 Complexity Quick Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Big-O</th>
+<th>Name</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(1)</td>
+<td>Constant</td>
+<td>Array index, Map lookup, push/pop</td>
+</tr>
+<tr>
+<td>O(log n)</td>
+<td>Logarithmic</td>
+<td>Binary search</td>
+</tr>
+<tr>
+<td>O(n)</td>
+<td>Linear</td>
+<td>One loop, <code>includes</code>, <code>indexOf</code></td>
+</tr>
+<tr>
+<td>O(n log n)</td>
+<td>Linearithmic</td>
+<td><code>sort</code></td>
+</tr>
+<tr>
+<td>O(n²)</td>
+<td>Quadratic</td>
+<td>Nested loops (fails when n ≈ 100,000)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong> n ≤ 1,000 → O(n²) is OK. n ≈ 100,000 → need O(n) or O(n log n). n ≤ 20 → exponential might pass.</p>
+<h3>1.10 Common Pitfalls</h3>
+<ol>
+<li><code>arr.sort()</code> without a comparator sorts as strings (<code>[10, 9, 1]</code> → <code>[1, 10, 9]</code>).</li>
+<li><code>shift()</code> / <code>unshift()</code> are O(n); don't use them in big loops.</li>
+<li><code>0.1 + 0.2 !== 0.3</code>: floating point; compare integers where possible.</li>
+<li><code>for...in</code> on arrays gives string indexes; use <code>for...of</code>.</li>
+<li><code>Math.max(...hugeArray)</code> can crash for very large arrays (100k+); use a loop.</li>
+<li><code>slice</code> copies, <code>splice</code> mutates, and <code>sort</code>/<code>reverse</code> mutate.</li>
+<li><code>[] == false</code> is <code>true</code>; always use <code>===</code>.</li>
+</ol>
+<hr>
+<h2>2. Arrays &amp; Strings</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p>An <strong>array</strong> stores elements in consecutive memory slots, each reachable by its index. That layout gives arrays their performance profile:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>JS</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read / write by index</td>
+<td><code>a[i]</code></td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Add / remove at the <strong>end</strong></td>
+<td><code>push</code>, <code>pop</code></td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Add / remove at the <strong>front or middle</strong></td>
+<td><code>unshift</code>, <code>shift</code>, <code>splice</code></td>
+<td>O(n), because every later element shifts</td>
+</tr>
+<tr>
+<td>Search for a value</td>
+<td><code>indexOf</code>, <code>includes</code></td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Copy</td>
+<td><code>slice()</code>, <code>[...a]</code></td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<pre><code>index:   0   1   2   3   4   5
+value: [ 7 | 1 | 5 | 3 | 6 | 4 ]      a[2] -&gt; 5 instantly
+</code></pre>
+<p>A <strong>string</strong> behaves like a read-only array of characters. You can read <code>s[i]</code>, but you can't assign to it. To &quot;edit&quot; a string, convert it to an array, change the array, then <code>join(&quot;&quot;)</code>. Careful: building a string with <code>+=</code> inside a big loop creates a new string each time, so collect pieces in an array instead.</p>
+<h4>The core idea: one pass with a running value</h4>
+<p>Most beginner array problems look like they need to compare every pair of elements. The faster approach is to scan once and carry a small <strong>summary of everything seen so far</strong> (a running sum, min, max, count, or previous value). At each position you answer &quot;given what I know so far, what is the best answer ending here?&quot; and update the summary.</p>
+<pre><code>scan left -&gt; right        summary so far      decision at this element
+[ 7 | 1 | 5 | 3 | 6 | 4 ]   min = 1           profit today = 5 - 1
+</code></pre>
+<h4>Prefix sums (a second tool)</h4>
+<p>A <strong>prefix array</strong> stores the sum of everything before each index: <code>prefix[i+1] = prefix[i] + a[i]</code>. After one O(n) pass, any range sum <code>a[i..j]</code> is <code>prefix[j+1] - prefix[i]</code> in O(1). Use it when a problem asks many range-sum questions.</p>
+<h4>What problems look like this</h4>
+<ul>
+<li>&quot;Return the max / min / total / count of something over the array.&quot;</li>
+<li>&quot;For each element, compare against everything before (or after) it.&quot;</li>
+<li>Reversing, merging or scanning strings character by character.</li>
+<li>The obvious solution is a double loop over all pairs, and N is large (Codility often uses 100,000).</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Best Time to Buy and Sell Stock.</strong> <code>prices[i]</code> is the price on day <code>i</code>. Buy once, then sell on a later day. Return the max profit, or 0.</p>
+<ul>
+<li><code>[7,1,5,3,6,4]</code> → <code>5</code> (buy at 1, sell at 6)</li>
+<li><code>[7,6,4,3,1]</code> → <code>0</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Step 1: the brute force and why it's too slow</h4>
+<p>Try every pair (buy day <code>i</code>, sell day <code>j &gt; i</code>) and keep the largest <code>prices[j] - prices[i]</code>:</p>
+<pre><code class="language-js">for (let i = 0; i &lt; n; i++)
+  for (let j = i + 1; j &lt; n; j++)
+    best = Math.max(best, prices[j] - prices[i]);
+</code></pre>
+<p>With n = 6 that's 15 pairs. With n = 100,000 it's about 5 billion, which fails Codility's time limit. O(n²).</p>
+<h4>Step 2: find the redundant work</h4>
+<p>Fix the <strong>selling day</strong> <code>j</code>. Which buy day gives the best profit for that sale? Obviously the <strong>cheapest price before day j</strong>. All the other buy days for that same sale are wasted comparisons, so we never need to look at them individually. We only need one number: <code>minPrice</code> so far.</p>
+<h4>Step 3: define the two variables</h4>
+<ul>
+<li><code>minPrice</code>: the lowest price seen up to today (start at <code>Infinity</code> so the first price replaces it).</li>
+<li><code>best</code>: the largest profit found so far (start at <code>0</code>, because &quot;don't trade&quot; is allowed).</li>
+</ul>
+<h4>Step 4: the rule at each day <code>p</code></h4>
+<ol>
+<li>If <code>p &lt; minPrice</code>, today is a new cheapest day: update <code>minPrice</code>. (Selling today would lose money, so skip the profit check.)</li>
+<li>Otherwise compute <code>p - minPrice</code>. If it beats <code>best</code>, update <code>best</code>.</li>
+</ol>
+<h4>Step 5: trace <code>[7, 1, 5, 3, 6, 4]</code></h4>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Price</th>
+<th>minPrice after</th>
+<th>Profit if sold today</th>
+<th>best after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>7</td>
+<td>7</td>
+<td>n/a</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td><strong>1</strong></td>
+<td>n/a (new low)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>1</td>
+<td>4</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>1</td>
+<td>5</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Answer: <code>5</code>. For <code>[7,6,4,3,1]</code> the price only falls, so <code>minPrice</code> keeps updating and <code>best</code> stays <code>0</code>.</p>
+<h4>Step 6: complexity</h4>
+<p>One loop, O(1) work per element → <strong>O(n) time</strong>, two variables → <strong>O(1) space</strong>.</p>
+<h4>Edge cases to test</h4>
+<p>Empty array (loop never runs, returns 0), single day (0), all equal prices (0), strictly decreasing (0).</p>
+<h3>Solution</h3>
+<pre><code class="language-js">function maxProfit(prices) {
+  let minPrice = Infinity;
+  let best = 0;
+  for (const p of prices) {
+    if (p &lt; minPrice) minPrice = p;       // new cheapest day
+    else best = Math.max(best, p - minPrice); // sell today
+  }
+  return best;
+}
+// Time O(n), Space O(1)
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Think &quot;one pass + running variables&quot; before nested loops.</li>
+<li>Prefix sums turn range-sum queries into O(1): <code>prefix[j+1] - prefix[i]</code>.</li>
+<li>For strings, convert to an array, edit, then <code>join(&quot;&quot;)</code>.</li>
+<li>Watch edge cases: empty array, a single element, all negatives.</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>Input is a list/string and you need one answer from scanning it (max, min, count, total).</li>
+<li>You need to compare each element with &quot;everything before it&quot;.</li>
+<li>The brute-force answer is a double loop over pairs.</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/running-sum-of-1d-array/">Running Sum of 1d Array</a></li>
+<li><a href="https://leetcode.com/problems/maximum-subarray/">Maximum Subarray</a></li>
+<li><a href="https://leetcode.com/problems/plus-one/">Plus One</a></li>
+<li><a href="https://leetcode.com/problems/reverse-string/">Reverse String</a></li>
+<li><a href="https://leetcode.com/problems/longest-common-prefix/">Longest Common Prefix</a></li>
+<li><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/">Remove Duplicates from Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/pascals-triangle/">Pascal's Triangle</a></li>
+</ol>
+<hr>
+<h2>3. Hash Map / Set</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p>A <strong>hash table</strong> turns a key into an array position using a hash function, so it can find, insert and delete by key in <strong>O(1) on average</strong>, without scanning. JavaScript gives you two built-in versions:</p>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Stores</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Map</code></td>
+<td>key → value</td>
+<td>counting, remembering an index, grouping</td>
+</tr>
+<tr>
+<td><code>Set</code></td>
+<td>unique values only</td>
+<td>&quot;have I seen this?&quot;, removing duplicates</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-js">const seen = new Set();   seen.add(5);   seen.has(5);      // true, O(1)
+const count = new Map();  count.set(&#34;a&#34;, 1);  count.get(&#34;a&#34;); // 1, O(1)
+</code></pre>
+<pre><code>Array lookup (is 9 present?)        Set lookup (is 9 present?)
+scan [4,8,2,9,...]  -&gt; O(n)         hash(9) -&gt; bucket -&gt; yes/no  -&gt; O(1)
+</code></pre>
+<p>Notes: object keys always become strings, so prefer <code>Map</code> for numeric keys or when you need <code>.size</code>. If a key is missing, <code>map.get(k)</code> returns <code>undefined</code>, so use <code>map.get(k) ?? 0</code> for counters.</p>
+<h4>The core idea: trade memory for speed</h4>
+<p>Many problems repeat the same question: &quot;does value X exist somewhere else in the data?&quot; Answering it by scanning costs O(n) per question, O(n²) overall. If you store every value as you go, each question becomes O(1). You spend O(n) extra memory to cut the time from O(n²) to O(n).</p>
+<h4>Three patterns to recognize</h4>
+<ol>
+<li><strong>Frequency counter:</strong> count how many times each item appears (anagrams, majority element, first unique character).</li>
+<li><strong>Seen set:</strong> detect duplicates or cycles (<code>if (seen.has(x)) ...</code>).</li>
+<li><strong>Complement lookup:</strong> for each <code>x</code>, look for the partner you need (<code>target - x</code>) among earlier items.</li>
+</ol>
+<h4>What problems look like this</h4>
+<ul>
+<li>&quot;Does any value repeat?&quot;, &quot;How many times does each appear?&quot;, &quot;Do these two collections contain the same items?&quot;</li>
+<li>You need to match an element with something else and order doesn't matter.</li>
+<li>The brute force repeatedly searches the same array inside a loop.</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Two Sum.</strong> Given <code>nums</code> and <code>target</code>, return the indices of the two numbers that add up to <code>target</code> (exactly one solution).</p>
+<ul>
+<li><code>nums = [2,7,11,15], target = 9</code> → <code>[0,1]</code></li>
+<li><code>nums = [3,2,4], target = 6</code> → <code>[1,2]</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Step 1: the brute force</h4>
+<p>Check every pair <code>(i, j)</code> and test <code>nums[i] + nums[j] === target</code>. That's O(n²) pairs.</p>
+<pre><code class="language-js">for (let i = 0; i &lt; n; i++)
+  for (let j = i + 1; j &lt; n; j++)
+    if (nums[i] + nums[j] === target) return [i, j];
+</code></pre>
+<h4>Step 2: find the repeated question</h4>
+<p>Fix <code>i</code>. The inner loop is really asking, &quot;<strong>is there a number equal to <code>target - nums[i]</code> somewhere in the array?</strong>&quot; That is a pure lookup question, and a lookup is exactly what a hash map is fast at.</p>
+<h4>Step 3: decide what to store</h4>
+<p>We need the <strong>index</strong> of the partner, not just whether it exists, so the map stores <code>value → index</code>.</p>
+<h4>Step 4: why we only look backwards</h4>
+<p>For a valid pair <code>(a, b)</code>, whichever number comes second will find the first one already stored. So at each element we (1) check whether the complement is already in the map and (2) only then store the current number. This also guarantees an element is never matched with itself.</p>
+<h4>Step 5: trace <code>nums = [3, 2, 4]</code>, <code>target = 6</code></h4>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>x</th>
+<th>need = 6 − x</th>
+<th>map before</th>
+<th>Found?</th>
+<th>map after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td><code>{}</code></td>
+<td>no (the map is empty, so 3 can't pair with itself)</td>
+<td><code>{3:0}</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td><code>{3:0}</code></td>
+<td>no</td>
+<td><code>{3:0, 2:1}</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td><code>{3:0, 2:1}</code></td>
+<td><strong>yes → index 1</strong></td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<p>Return <code>[1, 2]</code>. For <code>[2, 7, 11, 15]</code>, target 9: at <code>7</code> the need is <code>2</code>, which is already stored at index 0, so the answer is <code>[0, 1]</code>.</p>
+<h4>Step 6: complexity</h4>
+<p>Each element does one lookup and one insert, both O(1) → <strong>O(n) time</strong>. The map can hold up to n entries → <strong>O(n) space</strong>.</p>
+<h4>Common mistakes</h4>
+<ul>
+<li>Storing before checking (pairs an element with itself).</li>
+<li>Using an object <code>{}</code> and getting <code>&quot;1&quot;</code> vs <code>1</code> key surprises.</li>
+<li>Forgetting that duplicates overwrite: <code>[3, 3]</code>, target 6 works because we check before we store the second 3.</li>
+</ul>
+<h3>Solution</h3>
+<pre><code class="language-js">function twoSum(nums, target) {
+  const seen = new Map(); // value -&gt; index
+  for (let i = 0; i &lt; nums.length; i++) {
+    const need = target - nums[i];
+    if (seen.has(need)) return [seen.get(need), i];
+    seen.set(nums[i], i);
+  }
+  return [];
+}
+// Time O(n), Space O(n)
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Frequency counter: <code>map.set(k, (map.get(k) ?? 0) + 1)</code>.</li>
+<li><code>Set</code> = fast &quot;seen before?&quot; check.</li>
+<li>Complement pattern: store what you've seen, look up what you need.</li>
+<li>Keys in plain objects become strings; prefer <code>Map</code> for numeric keys.</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>You need to find duplicates, pairs, counts or &quot;first unique&quot;.</li>
+<li>Order doesn't matter and you need O(1) membership tests.</li>
+<li>Anagram or grouping problems (key = sorted string or character count).</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/contains-duplicate/">Contains Duplicate</a></li>
+<li><a href="https://leetcode.com/problems/valid-anagram/">Valid Anagram</a></li>
+<li><a href="https://leetcode.com/problems/ransom-note/">Ransom Note</a></li>
+<li><a href="https://leetcode.com/problems/single-number/">Single Number</a></li>
+<li><a href="https://leetcode.com/problems/intersection-of-two-arrays/">Intersection of Two Arrays</a></li>
+<li><a href="https://leetcode.com/problems/happy-number/">Happy Number</a></li>
+<li><a href="https://leetcode.com/problems/isomorphic-strings/">Isomorphic Strings</a></li>
+</ol>
+<hr>
+<h2>4. Two Pointers</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p>The two-pointer technique scans an array (or string) with <strong>two index variables</strong> instead of one. Because both pointers only move in one direction each, together they make at most about <code>n</code> moves, so the whole scan is <strong>O(n)</strong>. Compare that with a nested loop that looks at every pair, which is O(n²).</p>
+<p>There are two common setups:</p>
+<table>
+<thead>
+<tr>
+<th>Setup</th>
+<th>Starting positions</th>
+<th>Movement</th>
+<th>Typical problems</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Opposite ends</strong></td>
+<td><code>left = 0</code>, <code>right = n - 1</code></td>
+<td>move toward each other</td>
+<td>pair sum in a sorted array, palindromes, reverse, container with most water</td>
+</tr>
+<tr>
+<td><strong>Same direction</strong></td>
+<td><code>slow = 0</code>, <code>fast = 0</code></td>
+<td><code>fast</code> explores, <code>slow</code> marks where to write</td>
+<td>remove duplicates, move zeroes, partitioning</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Opposite ends:   [ 1  3  4  6  8  10  13 ]        Same direction:  [ 0  1  0  3  12 ]
+                   ^                    ^                           ^
+                  left               right                         slow/fast
+</code></pre>
+<h4>The core idea: each move eliminates many candidate pairs</h4>
+<p>The pair <code>(left, right)</code> is just <em>one</em> of the many pairs you could check. The power of the technique comes from this: <strong>after looking at the current pair, you can prove that a whole group of other pairs can never be the answer, so you skip them.</strong> For that proof you usually need structure in the data, most often a <strong>sorted array</strong> (or a symmetric check like a palindrome).</p>
+<p>Example with a sorted array and target 13, pair <code>(1, 13)</code> has sum 14, which is too big. Since the array is sorted, <code>13</code> plus <em>any</em> other number is at least <code>13 + 1</code>, so <code>13</code> can't be part of an answer with anything to its right of <code>1</code>. Throw <code>13</code> away by moving <code>right</code> inward. If the sum had been too small, the same logic would let us discard the left value.</p>
+<h4>How to use it in JavaScript</h4>
+<pre><code class="language-js">let left = 0, right = arr.length - 1;
+while (left &lt; right) {          // pointers must not cross
+  // look at arr[left] and arr[right], then move ONE of them
+}
+</code></pre>
+<h4>What problems look like this</h4>
+<ul>
+<li>Find a pair or triplet with a given sum, difference or property (usually sorted input).</li>
+<li>Check or build something symmetric: palindrome, reverse, merge two sorted arrays.</li>
+<li>Modify an array in place with O(1) extra space (remove, partition, dedupe).</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Valid Palindrome.</strong> Ignoring case and non-alphanumeric characters, is the string a palindrome?</p>
+<ul>
+<li><code>&quot;A man, a plan, a canal: Panama&quot;</code> → <code>true</code></li>
+<li><code>&quot;race a car&quot;</code> → <code>false</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Step 1: the brute force</h4>
+<p>A palindrome reads the same forwards and backwards. The naive way is to clean the string (lowercase, drop punctuation), reverse a copy and compare. That works, but it builds extra strings (O(n) space). Two pointers can do the check in place.</p>
+<h4>Step 2: what does &quot;palindrome&quot; really require?</h4>
+<p>It means the characters at <strong>mirrored positions</strong> match: the first equals the last, the second equals the second last, and so on. We never need to compare a character with anything other than its mirror. So:</p>
+<ul>
+<li>Compare the outermost pair.</li>
+<li>If they differ → not a palindrome. Stop.</li>
+<li>If they match → the question shrinks to the inner substring, which is the same problem but smaller.</li>
+</ul>
+<h4>Step 3: translate into two pointers</h4>
+<p>Place <code>l</code> at the start and <code>r</code> at the end. After comparing, move both inward by one. Stop when they meet or cross (<code>l &gt;= r</code>); all pairs have been checked.</p>
+<h4>Step 4: handle characters we must ignore</h4>
+<p>The problem says to ignore spaces, commas and so on. Before each comparison:</p>
+<ul>
+<li>while <code>s[l]</code> is not alphanumeric → <code>l++</code></li>
+<li>while <code>s[r]</code> is not alphanumeric → <code>r--</code></li>
+</ul>
+<p>Keep <code>l &lt; r</code> in these inner loops so they can't run past each other.</p>
+<h4>Step 5: trace <code>s = &quot;Ab,a&quot;</code> (cleaned: <code>aba</code>)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>l</th>
+<th>r</th>
+<th>s[l]</th>
+<th>s[r]</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td><code>A</code></td>
+<td><code>a</code></td>
+<td>equal ignoring case → <code>l=1, r=2</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td><code>b</code></td>
+<td><code>,</code></td>
+<td><code>r</code> skips the comma → <code>r=1</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td><code>b</code></td>
+<td><code>b</code></td>
+<td>equal → <code>l=2, r=0</code></td>
+</tr>
+<tr>
+<td>end</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><code>l &gt;= r</code> → return <code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p>For <code>&quot;race a car&quot;</code>, the first compare is <code>r</code> vs <code>r</code> (ok), then <code>a</code> vs <code>a</code> (ok), then <code>c</code> vs <code>c</code> (ok), then <code>e</code> vs <code> </code> skipped to <code>a</code> → <code>e !== a</code> → <code>false</code>.</p>
+<h4>Step 6: the same idea on a sorted pair-sum</h4>
+<p>Sorted <code>[1, 3, 4, 6, 8, 10, 13]</code>, target 13:</p>
+<ul>
+<li><code>1 + 13 = 14</code> &gt; 13. Any pair ending in <code>13</code> is ≥ <code>1 + 13</code>, so <strong><code>13</code> is useless</strong> → <code>right--</code>.</li>
+<li><code>1 + 10 = 11</code> &lt; 13. Any pair starting with <code>1</code> is ≤ <code>1 + 10</code>, so <strong><code>1</code> is useless</strong> → <code>left++</code>.</li>
+<li><code>3 + 10 = 13</code> → found.</li>
+</ul>
+<p>Each step discards a whole row of pairs, so n elements need at most n steps.</p>
+<h4>Step 7: complexity</h4>
+<p>Every iteration moves at least one pointer inward → at most n moves → <strong>O(n) time</strong>, <strong>O(1) space</strong>.</p>
+<h4>Common mistakes</h4>
+<ul>
+<li>Moving both pointers when you should move only one (sorted pair-sum).</li>
+<li>Forgetting <code>l &lt; r</code> in the inner skip loops.</li>
+<li>Using the same-direction technique on unsorted data when order matters.</li>
+</ul>
+<h3>Solution</h3>
+<pre><code class="language-js">function isPalindrome(s) {
+  const isAlnum = (c) =&gt; /[a-z0-9]/i.test(c);
+  let l = 0, r = s.length - 1;
+  while (l &lt; r) {
+    while (l &lt; r &amp;&amp; !isAlnum(s[l])) l++;
+    while (l &lt; r &amp;&amp; !isAlnum(s[r])) r--;
+    if (s[l].toLowerCase() !== s[r].toLowerCase()) return false;
+    l++; r--;
+  }
+  return true;
+}
+// Time O(n), Space O(1)
+
+// Same-direction example: Move Zeroes (in place)
+function moveZeroes(nums) {
+  let w = 0;                          // next write position
+  for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] !== 0) { [nums[w], nums[i]] = [nums[i], nums[w]]; w++; }
+  }
+}
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Opposite ends: sorted array, pair-sum, palindrome, reversing.</li>
+<li>Same direction: remove/partition in place with a write pointer.</li>
+<li>Decide the move rule: in pair-sum, sum too small → <code>l++</code>, too big → <code>r--</code>.</li>
+<li>Always guard <code>l &lt; r</code> inside inner loops.</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>The input is sorted (or can be sorted) and you search for a pair/triplet.</li>
+<li>A palindrome or symmetric check is needed.</li>
+<li>You must modify an array in place with O(1) extra space.</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/valid-palindrome/">Valid Palindrome</a></li>
+<li><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">Two Sum II – Input Array Is Sorted</a></li>
+<li><a href="https://leetcode.com/problems/move-zeroes/">Move Zeroes</a></li>
+<li><a href="https://leetcode.com/problems/remove-element/">Remove Element</a></li>
+<li><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">Squares of a Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/merge-sorted-array/">Merge Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/is-subsequence/">Is Subsequence</a></li>
+</ol>
+<hr>
+<h2>5. Sliding Window</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p>A <strong>window</strong> is a contiguous slice of the array described by two indexes, <code>left</code> and <code>right</code>. The <strong>sliding window</strong> technique moves that slice across the data one step at a time, keeping a running summary (sum, count, set of characters) and updating it incrementally instead of recomputing it.</p>
+<pre><code>nums = [ 1  12  -5  -6  50   3 ]
+window :  [---------]               sum = 2
+              [---------]           sum = 2 + 50 - 1 = 51   (add new, drop old)
+</code></pre>
+<p>Adding the new element on the right and removing the old element on the left costs O(1), so scanning every window costs O(n) total, instead of O(n·k) if you re-add k numbers each time.</p>
+<h4>Two types</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Window size</th>
+<th>How it moves</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fixed length</strong></td>
+<td>Given <code>k</code></td>
+<td>add <code>nums[i]</code>, drop <code>nums[i - k]</code> each step</td>
+<td>max sum of size k, max average</td>
+</tr>
+<tr>
+<td><strong>Variable length</strong></td>
+<td>Changes</td>
+<td>grow <code>right</code> always; move <code>left</code> only when the window becomes invalid (or to shrink it for a minimum)</td>
+<td>longest substring without repeats, smallest subarray with sum ≥ target</td>
+</tr>
+</tbody>
+</table>
+<h4>Core idea</h4>
+<p>Overlapping windows share almost all of their elements. Sliding exploits that overlap: only <strong>one element enters</strong> and <strong>one leaves</strong> per step.</p>
+<p>For variable windows there is a second, important idea: <strong><code>left</code> never moves backwards</strong>. Each index enters the window once and leaves at most once, so even with a <code>while</code> loop inside the <code>for</code>, the total work is O(n).</p>
+<h4>Template (variable window)</h4>
+<pre><code class="language-js">let left = 0;
+for (let right = 0; right &lt; n; right++) {
+  // 1. add arr[right] to the window state
+  while (/* window is invalid */) {
+    // 2. remove arr[left] from the window state
+    left++;
+  }
+  // 3. window [left..right] is valid: update the answer (length = right - left + 1)
+}
+</code></pre>
+<h4>What problems look like this</h4>
+<ul>
+<li>Contiguous subarray or substring (not subsequence).</li>
+<li>&quot;Maximum / minimum / longest / shortest ... of size k&quot; or &quot;with at most k ...&quot;.</li>
+<li>The brute force recomputes a sum or count over overlapping ranges.</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Maximum Average Subarray I.</strong> Find the contiguous subarray of length <code>k</code> with the largest average.</p>
+<ul>
+<li><code>nums = [1,12,-5,-6,50,3], k = 4</code> → <code>12.75</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Part A: fixed window, Maximum Average Subarray (k = 4)</h4>
+<p><strong>Step 1: brute force.</strong> For every start index, add up the next <code>k</code> numbers: <code>(n − k + 1)</code> windows × <code>k</code> additions = O(n·k). For n = 100,000 and k = 50,000 that's billions of operations.</p>
+<p><strong>Step 2: spot the overlap.</strong> Window 1 is <code>[1, 12, -5, -6]</code>, window 2 is <code>[12, -5, -6, 50]</code>. They share <code>12, -5, -6</code>. Only <code>1</code> left and <code>50</code> arrived, so <code>newSum = oldSum - 1 + 50</code>.</p>
+<p><strong>Step 3: build the first window</strong> by summing <code>nums[0..k-1]</code> (this is the only O(k) step).</p>
+<p><strong>Step 4: slide.</strong> For each <code>i</code> from <code>k</code> to <code>n − 1</code>: <code>sum += nums[i] - nums[i - k]</code>, then <code>best = max(best, sum)</code>.</p>
+<p><strong>Step 5: trace</strong> <code>[1, 12, -5, -6, 50, 3]</code>, k = 4:</p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>Added</th>
+<th>Removed</th>
+<th>sum</th>
+<th>best</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(initial)</td>
+<td></td>
+<td></td>
+<td>1+12−5−6 = <strong>2</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>50</td>
+<td>1</td>
+<td>2 + 50 − 1 = <strong>51</strong></td>
+<td>51</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>12</td>
+<td>51 + 3 − 12 = <strong>42</strong></td>
+<td>51</td>
+</tr>
+</tbody>
+</table>
+<p>Answer: <code>51 / 4 = 12.75</code>. (We compare sums, since all windows have the same size.)</p>
+<h4>Part B: variable window, Longest Substring Without Repeating Characters</h4>
+<p><strong>Step 1: brute force.</strong> Check every substring for repeats: O(n²) substrings × O(n) to check = O(n³), or O(n²) with a Set.</p>
+<p><strong>Step 2: define the window's rule.</strong> The window <code>s[left..right]</code> must contain <strong>no repeated characters</strong>. A Set holds the characters currently inside.</p>
+<p><strong>Step 3: expand <code>right</code> every step.</strong> If <code>s[right]</code> is already in the Set, the window is invalid.</p>
+<p><strong>Step 4: shrink from the left</strong> (remove <code>s[left]</code> from the Set, <code>left++</code>) until the duplicate is gone, then add <code>s[right]</code>.</p>
+<p><strong>Step 5: record</strong> <code>right - left + 1</code> after each step.</p>
+<p><strong>Step 6: trace</strong> <code>s = &quot;abca&quot;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>right</th>
+<th>char</th>
+<th>Action</th>
+<th>Set after</th>
+<th>left</th>
+<th>length</th>
+<th>best</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>a</td>
+<td>add</td>
+<td>{a}</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>b</td>
+<td>add</td>
+<td>{a,b}</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c</td>
+<td>add</td>
+<td>{a,b,c}</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>a</td>
+<td>duplicate! remove <code>a</code> (left→1), then add</td>
+<td>{b,c,a}</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 7: complexity.</strong> <code>right</code> moves n times and <code>left</code> moves at most n times in total → <strong>O(n)</strong> time, O(min(n, alphabet)) space.</p>
+<h4>Common mistakes</h4>
+<ul>
+<li>Using <code>if</code> instead of <code>while</code> when shrinking (one removal may not fix the window).</li>
+<li>Off-by-one on length (<code>right - left + 1</code>, not <code>right - left</code>).</li>
+<li>Forgetting to build the first window before the slide loop.</li>
+</ul>
+<h3>Solution</h3>
+<pre><code class="language-js">function findMaxAverage(nums, k) {
+  let sum = 0;
+  for (let i = 0; i &lt; k; i++) sum += nums[i];
+  let best = sum;
+  for (let i = k; i &lt; nums.length; i++) {
+    sum += nums[i] - nums[i - k];
+    best = Math.max(best, sum);
+  }
+  return best / k;
+}
+// Time O(n), Space O(1)
+
+// Variable window template: longest substring without repeating characters
+function lengthOfLongestSubstring(s) {
+  const seen = new Set();
+  let l = 0, best = 0;
+  for (let r = 0; r &lt; s.length; r++) {
+    while (seen.has(s[r])) seen.delete(s[l++]); // shrink until valid
+    seen.add(s[r]);
+    best = Math.max(best, r - l + 1);
+  }
+  return best;
+}
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Fixed window: <code>sum += new − old</code>.</li>
+<li>Variable window: expand <code>r</code> in a <code>for</code>, shrink <code>l</code> in a <code>while</code> when invalid.</li>
+<li>Window length = <code>r − l + 1</code>.</li>
+<li>Store window state in a number, Set or Map.</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>Keywords: &quot;contiguous subarray/substring&quot;, &quot;longest/shortest&quot;, &quot;at most k&quot;, &quot;of size k&quot;.</li>
+<li>You'd otherwise recompute a sum or count for overlapping ranges.</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/maximum-average-subarray-i/">Maximum Average Subarray I</a></li>
+<li><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">Best Time to Buy and Sell Stock</a></li>
+<li><a href="https://leetcode.com/problems/contains-duplicate-ii/">Contains Duplicate II</a></li>
+<li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">Longest Substring Without Repeating Characters</a> (medium, but the classic)</li>
+<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/">Minimum Size Subarray Sum</a> (medium)</li>
+<li><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">Find All Anagrams in a String</a> (medium)</li>
+</ol>
+<hr>
+<h2>6. Sorting &amp; Searching</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p><strong>Sorting</strong> arranges data in order. JavaScript's <code>arr.sort(compareFn)</code> runs in O(n log n). <strong>Searching</strong> finds a value; on unsorted data you must check each element (O(n)), but on <strong>sorted</strong> data you can use <strong>binary search</strong>, which takes O(log n).</p>
+<pre><code class="language-js">nums.sort((a, b) =&gt; a - b);   // ascending. WITHOUT a comparator, JS sorts as strings!
+// [10, 9, 1].sort()  -&gt;  [1, 10, 9]   (a classic bug)
+</code></pre>
+<p>The comparator returns a negative number if <code>a</code> goes first, positive if <code>b</code> goes first, and 0 for a tie.</p>
+<h4>Why sorting helps</h4>
+<p>Once sorted, equal values sit next to each other, pairs can be found with two pointers, and binary search becomes possible. A common strategy: &quot;sort first (O(n log n)), then solve in O(n).&quot; That beats an O(n²) brute force.</p>
+<h4>Binary search: fundamentals</h4>
+<p>Keep a range <code>[lo, hi]</code> that must contain the answer. Look at the middle element and <strong>discard half the range</strong> based on one comparison.</p>
+<pre><code>sorted: [-1  0  3  5  9  12]     target = 9
+          lo       mid     hi
+mid=3 &lt; 9  -&gt; throw away the left half -&gt; lo = mid + 1
+</code></pre>
+<p>Each step halves the range, so 1,000,000 elements need about 20 comparisons.</p>
+<h4>Beyond &quot;find a value&quot;: binary search on a condition</h4>
+<p>Binary search works whenever the answers go from <strong>false, false, ..., false, true, true, ..., true</strong> (a monotonic condition). Examples: first bad version, integer square root, smallest capacity that works. You find the boundary between false and true.</p>
+<h4>Two templates to memorize</h4>
+<ol>
+<li><strong>Exact match:</strong> loop <code>while (lo &lt;= hi)</code>, return the index on equality.</li>
+<li><strong>First true:</strong> loop <code>while (lo &lt; hi)</code>, <code>hi = mid</code> when the condition holds, else <code>lo = mid + 1</code>.</li>
+</ol>
+<h4>What problems look like this</h4>
+<ul>
+<li>&quot;Sorted array&quot; in the statement, or &quot;O(log n)&quot; required.</li>
+<li>&quot;Find the minimum / maximum X such that ...&quot; (search the answer space).</li>
+<li>Duplicates, intervals or closest values, where sorting makes things adjacent.</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Binary Search.</strong> Given a sorted array <code>nums</code> and <code>target</code>, return its index or <code>-1</code>.</p>
+<ul>
+<li><code>nums = [-1,0,3,5,9,12], target = 9</code> → <code>4</code></li>
+<li><code>target = 2</code> → <code>-1</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Step 1: the brute force</h4>
+<p>Scan from the start and compare each element with the target: O(n). For 1,000,000 elements that could be 1,000,000 checks per search.</p>
+<h4>Step 2: use the sorted order to eliminate half</h4>
+<p>Compare the target with the <strong>middle</strong> element:</p>
+<ul>
+<li>If <code>nums[mid] === target</code> → done.</li>
+<li>If <code>nums[mid] &lt; target</code> → because the array is sorted, <strong>everything at or before <code>mid</code> is also too small</strong>. Discard that whole left half (<code>lo = mid + 1</code>).</li>
+<li>If <code>nums[mid] &gt; target</code> → everything at or after <code>mid</code> is too big. Discard the right half (<code>hi = mid - 1</code>).</li>
+</ul>
+<p>One comparison eliminates half of all remaining candidates.</p>
+<h4>Step 3: set up the loop</h4>
+<ul>
+<li><code>lo = 0</code>, <code>hi = n - 1</code> (the inclusive range that may hold the answer).</li>
+<li><code>mid = lo + Math.floor((hi - lo) / 2)</code>. This form avoids overflow in other languages and is the habit to keep.</li>
+<li>Keep looping while <code>lo &lt;= hi</code>. When <code>lo &gt; hi</code> the range is empty, so the target isn't there → return <code>-1</code>.</li>
+</ul>
+<h4>Step 4: trace <code>nums = [-1, 0, 3, 5, 9, 12]</code>, target 9</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>lo</th>
+<th>hi</th>
+<th>mid</th>
+<th>nums[mid]</th>
+<th>Compare</th>
+<th>Next range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>3 &lt; 9</td>
+<td><code>lo = 3</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+<td><strong>found</strong></td>
+<td>return <code>4</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Step 5: trace a missing target (2)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>lo</th>
+<th>hi</th>
+<th>mid</th>
+<th>nums[mid]</th>
+<th>Compare</th>
+<th>Next range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>3 &gt; 2</td>
+<td><code>hi = 1</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>-1</td>
+<td>-1 &lt; 2</td>
+<td><code>lo = 1</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0 &lt; 2</td>
+<td><code>lo = 2</code></td>
+</tr>
+<tr>
+<td>end</td>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td><code>lo &gt; hi</code></td>
+<td>return <code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Step 6: the &quot;first true&quot; version</h4>
+<p>For problems like First Bad Version (versions <code>1..n</code>, find the first bad one):</p>
+<ul>
+<li><code>mid</code> is bad (true) → the answer is <code>mid</code> or earlier, so <code>hi = mid</code> (keep <code>mid</code>!).</li>
+<li><code>mid</code> is good (false) → the answer is after <code>mid</code>, so <code>lo = mid + 1</code>.</li>
+<li>Stop when <code>lo === hi</code>; that index is the first true.</li>
+</ul>
+<h4>Step 7: complexity</h4>
+<p>The range halves each loop: n → n/2 → n/4 ... → 1, so <strong>O(log n)</strong> time, <strong>O(1)</strong> space. If you must sort first, the total is O(n log n).</p>
+<h4>Common mistakes</h4>
+<ul>
+<li><code>sort()</code> with no comparator on numbers.</li>
+<li>Infinite loop from <code>lo = mid</code> instead of <code>mid + 1</code> in the exact-match template.</li>
+<li>Mixing the two templates' loop conditions (<code>&lt;=</code> vs <code>&lt;</code>).</li>
+<li>Applying binary search to unsorted data.</li>
+</ul>
+<h3>Solution</h3>
+<pre><code class="language-js">function search(nums, target) {
+  let lo = 0, hi = nums.length - 1;
+  while (lo &lt;= hi) {
+    const mid = lo + Math.floor((hi - lo) / 2);
+    if (nums[mid] === target) return mid;
+    if (nums[mid] &lt; target) lo = mid + 1;
+    else hi = mid - 1;
+  }
+  return -1;
+}
+// Time O(log n), Space O(1)
+
+// &#34;First true&#34; template (First Bad Version, sqrt, etc.)
+function firstTrue(n, isTrue) {
+  let lo = 1, hi = n;
+  while (lo &lt; hi) {
+    const mid = lo + Math.floor((hi - lo) / 2);
+    if (isTrue(mid)) hi = mid; else lo = mid + 1;
+  }
+  return lo;
+}
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Always pass a comparator: <code>arr.sort((a, b) =&gt; a - b)</code>.</li>
+<li>Binary search needs sorted/monotonic data.</li>
+<li>Two templates: exact match (<code>lo &lt;= hi</code>) and first-true (<code>lo &lt; hi</code>, <code>hi = mid</code>).</li>
+<li>Sorting first is fine when it turns O(n²) into O(n log n).</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>Input is sorted, or &quot;sorted order makes it simple&quot; (smallest missing, duplicates, intervals).</li>
+<li>You see &quot;find minimum X such that…&quot; (binary search on the answer).</li>
+<li>You need O(log n).</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/binary-search/">Binary Search</a></li>
+<li><a href="https://leetcode.com/problems/search-insert-position/">Search Insert Position</a></li>
+<li><a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a></li>
+<li><a href="https://leetcode.com/problems/sqrtx/">Sqrt(x)</a></li>
+<li><a href="https://leetcode.com/problems/valid-perfect-square/">Valid Perfect Square</a></li>
+<li><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">Squares of a Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/merge-sorted-array/">Merge Sorted Array</a></li>
+</ol>
+<hr>
+<h2>7. Stack &amp; Queue</h2>
+<h3>Overview</h3>
+<h4>Fundamentals</h4>
+<p>A <strong>stack</strong> is a collection that follows <strong>LIFO: Last In, First Out</strong>. The last item you added is the first one you remove. Adding is called <strong>push</strong> and removing is called <strong>pop</strong>, and both take O(1) time. Picture a stack of plates: you only touch the top.</p>
+<pre><code>push 9      push 8      pop() -&gt; 8      push 7
+ [9]        [9,8]        [9]            [9,7]
+             ^top                         ^top
+</code></pre>
+<h4>Using an array as a stack (JavaScript)</h4>
+<p>The <strong>end</strong> of the array is the top of the stack:</p>
+<pre><code class="language-js">const stack = [];
+stack.push(9);          // [9]
+stack.push(8);          // [9, 8]
+stack.pop();            // returns 8, stack is [9]
+stack[stack.length - 1] // peek at the top without removing
+stack.length === 0      // is it empty?
+</code></pre>
+<p><code>pop()</code> on an empty array returns <code>undefined</code>, so check emptiness before trusting the value.</p>
+<h4>Nested sequences: the main stack use case</h4>
+<p>When things open and close in a nested way (brackets, tags, function calls), the <strong>most recently opened thing must be closed first</strong>. That is exactly LIFO order.</p>
+<pre><code>{ [ ( ) ] }      opening  { [ (  -&gt; push, in this order
+                 closing  ) ] }  -&gt; pops come out in the reverse order: ( then [ then {
+</code></pre>
+<h4>Other stack patterns</h4>
+<ul>
+<li><strong>Undo / backspace simulation:</strong> push letters, pop on <code>#</code>.</li>
+<li><strong>Monotonic stack:</strong> keep the stack sorted so you can find the &quot;next greater element&quot; in O(n).</li>
+<li><strong>Evaluate expressions:</strong> push operands, pop when you see an operator.</li>
+</ul>
+<h4>Queue: fundamentals</h4>
+<p>A <strong>queue</strong> is <strong>FIFO: First In, First Out</strong>, like a line at a shop. Items join at the back (<code>enqueue</code>) and leave from the front (<code>dequeue</code>).</p>
+<pre><code>enqueue 1,2,3:   front [1, 2, 3] back      dequeue -&gt; 1      front [2, 3] back
+</code></pre>
+<p>In JavaScript, <code>arr.shift()</code> removes from the front but is <strong>O(n)</strong>. For large inputs, keep a <code>head</code> index and just move it forward (see the <code>Queue</code> class in the solution). Queues appear in order-of-arrival problems, &quot;recent N events&quot; counters and breadth-first search.</p>
+<h4>What problems look like this</h4>
+<ul>
+<li>Balanced / valid brackets, nested structures, decoding strings.</li>
+<li>&quot;Next greater / smaller element&quot;, daily temperatures.</li>
+<li>Simulating a process with undo, or a waiting line.</li>
+</ul>
+<h3>Problem Example</h3>
+<p><strong>Valid Parentheses.</strong> A string of <code>()[]{}</code> is valid if brackets close in the correct order.</p>
+<ul>
+<li><code>&quot;()[]{}&quot;</code> → <code>true</code></li>
+<li><code>&quot;(]&quot;</code> → <code>false</code></li>
+<li><code>&quot;([)]&quot;</code> → <code>false</code></li>
+</ul>
+<h3>Details Explanation</h3>
+<h4>Step 1: why not just count brackets?</h4>
+<p>Counting opens vs closes fails on <code>&quot;([)]&quot;</code>: there are two opens and two closes, but the order is wrong. Validity depends on <strong>order and type</strong>, not only totals.</p>
+<h4>Step 2: think about what must happen</h4>
+<p>When we see a closing bracket, it must close the <strong>most recent bracket that's still open</strong>. &quot;Most recent unmatched&quot; is the definition of the top of a stack, so a stack is the natural tool.</p>
+<h4>Step 3: the rules</h4>
+<p>Scan left to right:</p>
+<ol>
+<li><strong>Opening bracket</strong> (<code>(</code>, <code>[</code>, <code>{</code>) → push it. It's now waiting for its partner.</li>
+<li><strong>Closing bracket</strong> → pop the top. It must be the matching opener. If it isn't (or the stack was empty), the string is invalid, so return <code>false</code> right away.</li>
+<li>After the loop, the stack must be <strong>empty</strong>. Anything left is an opener that never got closed (e.g. <code>&quot;((&quot;</code>).</li>
+</ol>
+<h4>Step 4: the lookup table</h4>
+<p><code>pairs = { &quot;)&quot;: &quot;(&quot;, &quot;]&quot;: &quot;[&quot;, &quot;}&quot;: &quot;{&quot; }</code> lets us check &quot;is this a closer?&quot; with <code>c in pairs</code> and find its expected opener with <code>pairs[c]</code>.</p>
+<h4>Step 5: trace <code>&quot;{[()]}&quot;</code> (valid)</h4>
+<table>
+<thead>
+<tr>
+<th>char</th>
+<th>Action</th>
+<th>Stack after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td>push</td>
+<td><code>{</code></td>
+</tr>
+<tr>
+<td><code>[</code></td>
+<td>push</td>
+<td><code>{ [</code></td>
+</tr>
+<tr>
+<td><code>(</code></td>
+<td>push</td>
+<td><code>{ [ (</code></td>
+</tr>
+<tr>
+<td><code>)</code></td>
+<td>pop <code>(</code> matches</td>
+<td><code>{ [</code></td>
+</tr>
+<tr>
+<td><code>]</code></td>
+<td>pop <code>[</code> matches</td>
+<td><code>{</code></td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td>pop <code>{</code> matches</td>
+<td>empty → <strong>true</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>Step 6: trace <code>&quot;([)]&quot;</code> (invalid)</h4>
+<table>
+<thead>
+<tr>
+<th>char</th>
+<th>Action</th>
+<th>Stack after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(</code></td>
+<td>push</td>
+<td><code>(</code></td>
+</tr>
+<tr>
+<td><code>[</code></td>
+<td>push</td>
+<td><code>( [</code></td>
+</tr>
+<tr>
+<td><code>)</code></td>
+<td>pop gives <code>[</code>, but <code>)</code> needs <code>(</code></td>
+<td>mismatch → <strong>false</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>Step 7: the two other failure cases</h4>
+<ul>
+<li><code>&quot;)&quot;</code>: the stack is empty, <code>pop()</code> returns <code>undefined</code>, which isn't <code>&quot;(&quot;</code> → <code>false</code>.</li>
+<li><code>&quot;((&quot;</code>: no mismatches, but the stack still holds 2 items at the end → <code>false</code>.</li>
+</ul>
+<h4>Step 8: complexity</h4>
+<p>Every character is pushed at most once and popped at most once → <strong>O(n) time</strong>, up to n items stored → <strong>O(n) space</strong>.</p>
+<h4>Common mistakes</h4>
+<ul>
+<li>Forgetting the final <code>stack.length === 0</code> check.</li>
+<li>Popping from an empty stack and treating <code>undefined</code> as a match.</li>
+<li>Using <code>shift()</code> on a huge array as a queue.</li>
+</ul>
+<h3>Solution</h3>
+<pre><code class="language-js">function isValid(s) {
+  const pairs = { &#34;)&#34;: &#34;(&#34;, &#34;]&#34;: &#34;[&#34;, &#34;}&#34;: &#34;{&#34; };
+  const stack = [];
+  for (const c of s) {
+    if (c in pairs) {
+      if (stack.pop() !== pairs[c]) return false;
+    } else {
+      stack.push(c);
+    }
+  }
+  return stack.length === 0;
+}
+// Time O(n), Space O(n)
+
+// Simple queue with head pointer
+class Queue {
+  constructor() { this.items = []; this.head = 0; }
+  enqueue(x) { this.items.push(x); }
+  dequeue() { return this.items[this.head++]; }
+  get size() { return this.items.length - this.head; }
+}
+</code></pre>
+<h3>Summary</h3>
+<ul>
+<li>Stack = matching/nesting, undo, &quot;next greater element&quot; (monotonic stack).</li>
+<li>Queue = FIFO order, BFS, recent-window counts.</li>
+<li>Empty stack: <code>pop()</code> returns <code>undefined</code>, so check before trusting it.</li>
+<li>Process, then verify nothing is left over.</li>
+</ul>
+<h3>When Do I Use This?</h3>
+<ul>
+<li>Brackets, nested expressions, backspace/undo simulation.</li>
+<li>&quot;Next greater/smaller element&quot; (monotonic stack).</li>
+<li>Tasks processed in arrival order.</li>
+</ul>
+<h3>Practice Problems</h3>
+<ol>
+<li><a href="https://leetcode.com/problems/valid-parentheses/">Valid Parentheses</a></li>
+<li><a href="https://leetcode.com/problems/backspace-string-compare/">Backspace String Compare</a></li>
+<li><a href="https://leetcode.com/problems/baseball-game/">Baseball Game</a></li>
+<li><a href="https://leetcode.com/problems/min-stack/">Min Stack</a></li>
+<li><a href="https://leetcode.com/problems/implement-queue-using-stacks/">Implement Queue using Stacks</a></li>
+<li><a href="https://leetcode.com/problems/implement-stack-using-queues/">Implement Stack using Queues</a></li>
+<li><a href="https://leetcode.com/problems/next-greater-element-i/">Next Greater Element I</a></li>
+<li><a href="https://leetcode.com/problems/number-of-recent-calls/">Number of Recent Calls</a></li>
+</ol>
+<hr>
+<h2>9. Weekly Plan (8 weeks, about 1 hour/day, 5 days/week)</h2>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Topic</th>
+<th>Goals</th>
+<th>Problems</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>JS Foundation + Arrays &amp; Strings</td>
+<td>Master syntax cheat sheet, array/string methods, <code>sort</code> comparator</td>
+<td>Sec. 2 practice (5–7)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Arrays &amp; Strings (cont.) + Hash Map / Set</td>
+<td>Prefix sums, frequency counters, complement pattern</td>
+<td>Sec. 2 rest + Sec. 3 (4–5)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hash Map / Set (cont.)</td>
+<td>Anagrams, grouping, duplicates</td>
+<td>Sec. 3 rest</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Two Pointers</td>
+<td>Opposite-end and write-pointer patterns</td>
+<td>Sec. 4 (6–7)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sliding Window</td>
+<td>Fixed then variable windows</td>
+<td>Sec. 5 (5–6)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Sorting &amp; Searching</td>
+<td>Comparators, binary search templates</td>
+<td>Sec. 6 (6–7)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Stack &amp; Queue</td>
+<td>Matching, monotonic stack, queue with head index</td>
+<td>Sec. 7 (6–8)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Review + Codility mock</td>
+<td>Redo missed problems, timed Codility practice (Sec. 10)</td>
+<td>Sec. 10 + 3 mixed LeetCode</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Daily routine:</strong> (1) Read the problem and write the brute force (10 min). (2) Find the pattern and optimize (20 min). (3) Code and test edge cases (20 min). (4) If stuck after 25 min, read a solution, then <strong>re-solve it from memory the next day</strong>. Keep a notebook of patterns you missed.</p>
+<hr>
+<h2>10. Codility-Style Practice</h2>
+<p>Codility format: implement <code>function solution(...)</code> and return the result. Hidden tests check <strong>correctness</strong> and <strong>performance</strong> (large N). Target O(N) or O(N log N). No console input, just the function.</p>
+<h3>Task 1: BinaryGap-style (Arrays/Strings)</h3>
+<p>Write a function <code>solution(N)</code> that returns the length of the longest sequence of consecutive zeros surrounded by ones in the binary representation of positive integer <code>N</code>. Return 0 if none.</p>
+<ul>
+<li>N = 1041 (<code>10000010001</code>) → <strong>5</strong></li>
+<li>N = 32 (<code>100000</code>) → <strong>0</strong></li>
+<li>N = 529 (<code>1000010001</code>) → <strong>4</strong></li>
+<li>Constraints: N is an integer in <code>[1..2,147,483,647]</code>.</li>
+</ul>
+<h3>Task 2: Odd Occurrence-style (Hash Set)</h3>
+<p><code>A</code> is a non-empty array of N integers where N is odd. Every value appears an even number of times except one. Write <code>solution(A)</code> that returns that unpaired value.</p>
+<ul>
+<li>A = [9, 3, 9, 3, 9, 7, 9] → <strong>7</strong></li>
+<li>A = [4] → <strong>4</strong></li>
+<li>A = [1, 1, 2, 2, 5] → <strong>5</strong></li>
+<li>Constraints: N in <code>[1..1,000,000]</code>, N odd; each element in <code>[1..1,000,000,000]</code>. Expected time O(N).</li>
+</ul>
+<h3>Task 3: Cyclic Rotation-style (Arrays)</h3>
+<p>Write <code>solution(A, K)</code> that rotates array <code>A</code> to the right <code>K</code> times and returns the result (each rotation moves the last element to the front).</p>
+<ul>
+<li>A = [3, 8, 9, 7, 6], K = 3 → <strong>[9, 7, 6, 3, 8]</strong></li>
+<li>A = [0, 0, 0], K = 1 → <strong>[0, 0, 0]</strong></li>
+<li>A = [], K = 5 → <strong>[]</strong></li>
+<li>Constraints: N and K in <code>[0..100]</code>, elements in <code>[-1000..1000]</code>.</li>
+</ul>
+<h3>Task 4: Tape Equilibrium-style (Prefix sums)</h3>
+<p>Array <code>A</code> of N integers (N ≥ 2). Split it at position P (<code>1 ≤ P &lt; N</code>) into <code>A[0..P-1]</code> and <code>A[P..N-1]</code>. The difference is <code>|sum(left) − sum(right)|</code>. Write <code>solution(A)</code> returning the <strong>minimal</strong> difference.</p>
+<ul>
+<li>A = [3, 1, 2, 4, 3] → <strong>1</strong> (split at P=3: left sum 6, right sum 7, so |6−7| = 1)</li>
+<li>A = [1, 1] → <strong>0</strong></li>
+<li>A = [-1000, 1000] → <strong>2000</strong></li>
+<li>Constraints: N in <code>[2..100,000]</code>; elements in <code>[-1000..1000]</code>. Expected time O(N).</li>
+</ul>
+<h3>Task 5: Missing Element-style (Math / Sorting)</h3>
+<p><code>A</code> contains N distinct integers from <code>[1..N+1]</code>, so exactly one number is missing. Write <code>solution(A)</code> that returns the missing number.</p>
+<ul>
+<li>A = [2, 3, 1, 5] → <strong>4</strong></li>
+<li>A = [] → <strong>1</strong></li>
+<li>A = [1] → <strong>2</strong></li>
+<li>Constraints: N in <code>[0..100,000]</code>. Expected time O(N), space O(1).</li>
+</ul>
+<p><strong>Practice tips:</strong> test the empty/single-element and maximum-size cases; avoid <code>shift()</code> or nested loops on large N; watch for integer overflow ideas (sums fit in JS numbers up to 2^53).</p>
+<h3>10.2 More Real Codility Practice Problems (Easy)</h3>
+<p>These are tasks from Codility's free training lessons (<a href="https://app.codility.com/programmers/lessons/">all lessons</a>). The task statements live on Codility, so each row has a link to the lesson page where the task is listed, a short paraphrase, the matching topic from this guide, and a hint. In the Codility editor you can choose <strong>JavaScript</strong>; define <code>function solution(A)</code> and return the answer.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Lesson</th>
+<th>What it asks (paraphrased)</th>
+<th>Topic here</th>
+<th>Hint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>FrogJmp</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/3-time_complexity/">3 – Time Complexity</a></td>
+<td>A frog at X jumps D at a time. Minimum jumps to reach at least Y.</td>
+<td>JS math</td>
+<td>No loop needed: <code>Math.ceil((Y - X) / D)</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>FrogRiverOne</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/4-counting_elements/">4 – Counting Elements</a></td>
+<td><code>A[k]</code> is the leaf falling at second k. Earliest second when leaves 1..X have all appeared, or −1.</td>
+<td>Hash Set</td>
+<td>Add leaves to a Set; when <code>set.size === X</code> return the index</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>PermCheck</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/4-counting_elements/">4 – Counting Elements</a></td>
+<td>Is <code>A</code> a permutation of 1..N (each number exactly once)? Return 1 or 0.</td>
+<td>Hash Set</td>
+<td>Reject if a value is &gt; N or already seen</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>MissingInteger</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/4-counting_elements/">4 – Counting Elements</a></td>
+<td>Smallest positive integer that doesn't appear in <code>A</code>.</td>
+<td>Hash Set</td>
+<td>Put positives in a Set, then count up from 1 until one is missing</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>PassingCars</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/5-prefix_sums/">5 – Prefix Sums</a></td>
+<td><code>A</code> has 0 (car going east) and 1 (going west). Count pairs (P, Q), P &lt; Q, where <code>A[P]=0</code> and <code>A[Q]=1</code>.</td>
+<td>Arrays / running count</td>
+<td>Scan once; keep a count of 0s so far, add it at every 1</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>CountDiv</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/5-prefix_sums/">5 – Prefix Sums</a></td>
+<td>How many integers in <code>[A..B]</code> are divisible by K?</td>
+<td>JS math</td>
+<td>Formula: <code>floor(B/K) - floor((A-1)/K)</code> (watch A = 0)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Distinct</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/6-sorting/">6 – Sorting</a></td>
+<td>Number of distinct values in <code>A</code>.</td>
+<td>Hash Set / Sorting</td>
+<td><code>new Set(A).size</code>, or sort and count changes</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>MaxProductOfThree</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/6-sorting/">6 – Sorting</a></td>
+<td>Largest product of any three elements.</td>
+<td>Sorting</td>
+<td>Sort; answer is <code>max(last three, first two × last)</code> because of negatives</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Brackets</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/7-stacks_and_queues/">7 – Stacks and Queues</a></td>
+<td>Is a string of <code>()[]{}</code> properly nested? Return 1 or 0.</td>
+<td>Stack</td>
+<td>Same as Valid Parentheses in Section 7</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Nesting</strong></td>
+<td><a href="https://app.codility.com/programmers/lessons/7-stacks_and_queues/">7 – Stacks and Queues</a></td>
+<td>Same idea but only <code>(</code> and <code>)</code>.</td>
+<td>Stack / counter</td>
+<td>A counter works: never negative, ends at 0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bonus (slightly harder, same lessons):</strong> Fish (Stacks and Queues), Triangle (Sorting), and <a href="https://app.codility.com/programmers/lessons/8-leader/">Dominator</a> (Leader).</p>
+<p><strong>Suggested order:</strong> FrogJmp → Distinct → PassingCars → PermCheck → FrogRiverOne → Nesting → Brackets → MissingInteger → CountDiv → MaxProductOfThree.</p>
+<p><strong>How to practice on Codility:</strong></p>
+<ol>
+<li>Read the constraints first (N up to 100,000 means O(n) or O(n log n)).</li>
+<li>Submit once you pass the examples. Codility's report shows <strong>Correctness</strong> and <strong>Performance</strong> scores separately; a slow solution gets partial credit.</li>
+<li>If the performance score is low, name the pattern from Section 11 and remove the nested loop.</li>
+<li>Review the score report's failing test names (for example &quot;extreme_empty&quot;, &quot;large_random&quot;) to learn which edge case you missed.</li>
+</ol>
+<hr>
+<h2>11. Pattern Recognition Cheat Sheet</h2>
+<table>
+<thead>
+<tr>
+<th>If the problem says…</th>
+<th>Think</th>
+<th>Typical complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;find duplicate / seen before / count occurrences&quot;</td>
+<td>Hash Set / Map</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;two numbers sum to target&quot; (unsorted)</td>
+<td>Hash Map (complement)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;sorted array&quot; + pair/triplet</td>
+<td>Two pointers</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;palindrome&quot;, &quot;reverse in place&quot;</td>
+<td>Two pointers (ends)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;remove/move elements in place&quot;</td>
+<td>Write pointer (same direction)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;contiguous subarray/substring of size k&quot;</td>
+<td>Fixed sliding window</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;longest/shortest substring with condition&quot;</td>
+<td>Variable sliding window</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;range sum / many sum queries&quot;</td>
+<td>Prefix sum</td>
+<td>O(n) build, O(1) query</td>
+</tr>
+<tr>
+<td>&quot;sorted&quot; or &quot;find minimum X such that…&quot;</td>
+<td>Binary search</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>&quot;anagram / same letters&quot;</td>
+<td>Frequency map or sort</td>
+<td>O(n) / O(n log n)</td>
+</tr>
+<tr>
+<td>&quot;balanced brackets / nested / undo&quot;</td>
+<td>Stack</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;next greater / smaller element&quot;</td>
+<td>Monotonic stack</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;process in arrival order / recent N&quot;</td>
+<td>Queue</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>&quot;max profit / best so far&quot;</td>
+<td>Running min/max variable</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>N ≤ 20</td>
+<td>Brute force may pass</td>
+<td>exponential</td>
+</tr>
+<tr>
+<td>N ≈ 100,000+</td>
+<td>Need O(n) or O(n log n)</td>
+<td>no nested loops</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision flow:</strong> brute force first → what is it repeating? → memory (hash), order (sort/pointers), overlapping ranges (window/prefix), or most-recent matching (stack).</p>
+<p><strong>Codility checklist:</strong> read constraints for N → write the brute force → name the pattern → code → test: empty, one element, all same, max size, negatives.</p>
+
+</body></html>
